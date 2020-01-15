@@ -58,11 +58,6 @@ func (c *CarBuilder) GetVehicle() VehicleProduct {
 	return c.v
 }
 
-// Build ...
-func (c *CarBuilder) Build() VehicleProduct {
-	return VehicleProduct{}
-}
-
 // BikeBuilder ...
 type BikeBuilder struct {
 	v VehicleProduct
@@ -91,7 +86,30 @@ func (b *BikeBuilder) GetVehicle() VehicleProduct {
 	return b.v
 }
 
-// Build ...
-func (b *BikeBuilder) Build() VehicleProduct {
-	return VehicleProduct{}
+// BusBuilder ...
+type BusBuilder struct {
+	v VehicleProduct
+}
+
+// SetWheels ...
+func (b *BusBuilder) SetWheels() BuildProcess {
+	b.v.Wheels = 6
+	return b
+}
+
+// SetSeats ...
+func (b *BusBuilder) SetSeats() BuildProcess {
+	b.v.Seats = 24
+	return b
+}
+
+// SetStructure ...
+func (b *BusBuilder) SetStructure() BuildProcess {
+	b.v.Structure = "Bus"
+	return b
+}
+
+// GetVehicle ...
+func (b *BusBuilder) GetVehicle() VehicleProduct {
+	return b.v
 }
