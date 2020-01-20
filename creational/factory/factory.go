@@ -1,6 +1,9 @@
 package factory
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type PaymentMethod interface {
 	Pay(n float32) string
@@ -11,17 +14,24 @@ const (
 	DebitCard = 2
 )
 
-func GetPaymentMethod(i int) (PaymentMethod, error) {
-	return nil, errors.New("Not implemented yet")
+func GetPaymentMethod(m int) (PaymentMethod, error) {
+	switch m {
+	case Cash:
+		return new(CashPM), nil
+	case DebitCard:
+		return new(DebitCardPM), nil
+	default:
+		return nil, errors.New(fmt.Sprintf("Payment method %d not recognized\n", m))
+	}
 }
 
 type CashPM struct{}
 type DebitCardPM struct{}
 
 func (CashPM) Pay(n float32) string {
-	return ""
+	return fmt.Sprintf("%0.2f paid using Cash\n", n)
 }
 
 func (DebitCardPM) Pay(n float32) string {
-	return ""
+	return fmt.Sprintf("%0.2f paid using DebitCard\n", n)
 }
