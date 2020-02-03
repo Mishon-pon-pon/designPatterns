@@ -16,6 +16,7 @@ type CarFactory struct{}
 
 // NewVehicle ...
 func (c *CarFactory) NewVehicle(v int) (Vehicle, error) {
+
 	switch v {
 	case LuxuryCarType:
 		return new(LuxuryCar), nil
@@ -23,5 +24,6 @@ func (c *CarFactory) NewVehicle(v int) (Vehicle, error) {
 		return new(FamilyCar), nil
 	default:
 		return nil, errors.New(fmt.Sprintf("Vehicle of type %d not recognized\n", v))
+
 	}
 }

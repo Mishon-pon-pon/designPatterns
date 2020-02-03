@@ -14,6 +14,6 @@ func (s *SportMotobike) NumSeats() int {
 }
 
 // GtMotobikeType ...
-func (s *SportMotobike) GtMotobikeType() int {
+func (s *SportMotobike) GetMotobikeType() int {
 	return SportMotobikeType
 }
